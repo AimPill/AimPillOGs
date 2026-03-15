@@ -1,178 +1,299 @@
---// SERVICES
-local UIS = game:GetService("UserInputService")
-local Players = game:GetService("Players")
+--[=[
+ d888b  db    db d888888b      .d888b.      db      db    db  .d8b.  
+88' Y8b 88    88   `88'        VP  `8D      88      88    88 d8' `8b 
+88      88    88    88            odD'      88      88    88 88ooo88 
+88  ooo 88    88    88          .88'        88      88    88 88~~~88 
+88. ~8~ 88b  d88   .88.        j88.         88booo. 88b  d88 88   88    @uniquadev
+ Y888P  ~Y8888P' Y888888P      888888D      Y88888P ~Y8888P' YP   YP  CONVERTER 
+]=]
 
-local player = Players.LocalPlayer
-local playerGui = player:WaitForChild("PlayerGui")
+-- Instances: 18 | Scripts: 6 | Modules: 0 | Tags: 0
+local G2L = {};
 
---// GUI
-local gui = Instance.new("ScreenGui")
-gui.Name = "ExecutorMenu"
-gui.ResetOnSpawn = false
-gui.Parent = playerGui
+-- StarterGui.ScreenGui
+G2L["1"] = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"));
+G2L["1"]["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling;
 
---// MAIN FRAME
-local frame = Instance.new("Frame")
-frame.Size = UDim2.new(0,400,0,250)
-frame.Position = UDim2.new(0.5,-200,0.5,-125)
-frame.BackgroundColor3 = Color3.fromRGB(30,30,30)
-frame.BorderSizePixel = 0
-frame.Parent = gui
 
---// TITLE
-local title = Instance.new("TextLabel")
-title.Size = UDim2.new(1,0,0,30)
-title.BackgroundTransparency = 1
-title.Text = "AimPill Menu"
-title.TextColor3 = Color3.new(1,1,1)
-title.TextScaled = true
-title.Parent = frame
+-- StarterGui.ScreenGui.Frame
+G2L["2"] = Instance.new("Frame", G2L["1"]);
+G2L["2"]["BorderSizePixel"] = 3;
+G2L["2"]["BackgroundColor3"] = Color3.fromRGB(25, 25, 25);
+G2L["2"]["ClipsDescendants"] = true;
+G2L["2"]["Size"] = UDim2.new(0, 474, 0, 419);
+G2L["2"]["Position"] = UDim2.new(0.15715, 0, 0.2686, 0);
+G2L["2"]["BorderColor3"] = Color3.fromRGB(72, 50, 89);
 
---// TAB BUTTON HOLDER
-local tabs = Instance.new("Frame")
-tabs.Size = UDim2.new(0,100,1,-30)
-tabs.Position = UDim2.new(0,0,0,30)
-tabs.BackgroundColor3 = Color3.fromRGB(25,25,25)
-tabs.Parent = frame
 
---// CONTENT HOLDER
-local content = Instance.new("Frame")
-content.Size = UDim2.new(1,-100,1,-30)
-content.Position = UDim2.new(0,100,0,30)
-content.BackgroundTransparency = 1
-content.Parent = frame
+-- StarterGui.ScreenGui.Frame.Frame
+G2L["3"] = Instance.new("Frame", G2L["2"]);
+G2L["3"]["BorderSizePixel"] = 0;
+G2L["3"]["BackgroundColor3"] = Color3.fromRGB(57, 57, 57);
+G2L["3"]["ClipsDescendants"] = true;
+G2L["3"]["Size"] = UDim2.new(0, 494, 0, 19);
+G2L["3"]["BorderColor3"] = Color3.fromRGB(72, 50, 89);
 
---// PAGES
-local pages = {}
 
-local function createPage(name)
-local page = Instance.new("Frame")
-page.Size = UDim2.new(1,0,1,0)
-page.Visible = false
-page.BackgroundTransparency = 1
-page.Parent = content
-pages[name] = page
-return page
-end
+-- StarterGui.ScreenGui.Frame.Frame.TextLabel
+G2L["4"] = Instance.new("TextLabel", G2L["3"]);
+G2L["4"]["BorderSizePixel"] = 0;
+G2L["4"]["TextSize"] = 13;
+G2L["4"]["BackgroundColor3"] = Color3.fromRGB(57, 57, 57);
+G2L["4"]["FontFace"] = Font.new([[rbxasset://fonts/families/Jura.json]], Enum.FontWeight.Bold, Enum.FontStyle.Italic);
+G2L["4"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["4"]["Size"] = UDim2.new(0, 205, 0, 13);
+G2L["4"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["4"]["Text"] = [[AimPill Originals]];
+G2L["4"]["Position"] = UDim2.new(-0.10027, 0, 0, 0);
 
-local mainPage = createPage("Main")
-local visualsPage = createPage("Visuals")
-local miscPage = createPage("Misc")
-local settingsPage = createPage("Settings")
 
-mainPage.Visible = true
+-- StarterGui.ScreenGui.Frame.Main
+G2L["5"] = Instance.new("TextButton", G2L["2"]);
+G2L["5"]["BorderSizePixel"] = 0;
+G2L["5"]["TextSize"] = 14;
+G2L["5"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["5"]["BackgroundColor3"] = Color3.fromRGB(57, 57, 57);
+G2L["5"]["FontFace"] = Font.new([[rbxasset://fonts/families/HighwayGothic.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
+G2L["5"]["Size"] = UDim2.new(0, 112, 0, 14);
+G2L["5"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["5"]["Text"] = [[Main]];
+G2L["5"]["Name"] = [[Main]];
+G2L["5"]["Position"] = UDim2.new(0.03076, 0, 0.06444, 0);
 
---// BUTTON CREATOR
-local function createButton(name,order)
 
-```
-local btn = Instance.new("TextButton")
-btn.Size = UDim2.new(1,0,0,40)
-btn.Position = UDim2.new(0,0,0,(order-1)*40)
-btn.Text = name
-btn.BackgroundColor3 = Color3.fromRGB(40,40,40)
-btn.TextColor3 = Color3.new(1,1,1)
-btn.Parent = tabs
+-- StarterGui.ScreenGui.Frame.Main.SubMenuFrame
+G2L["6"] = Instance.new("Frame", G2L["5"]);
+G2L["6"]["BackgroundColor3"] = Color3.fromRGB(45, 45, 45);
+G2L["6"]["Size"] = UDim2.new(0, 448, 0, 365);
+G2L["6"]["Position"] = UDim2.new(-0.00893, 0, 1.5, 0);
+G2L["6"]["BorderColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["6"]["Name"] = [[SubMenuFrame]];
 
-btn.MouseButton1Click:Connect(function()
 
-	for _,v in pairs(pages) do
-		v.Visible = false
-	end
+-- StarterGui.ScreenGui.Frame.Main.LocalScript
+G2L["7"] = Instance.new("LocalScript", G2L["5"]);
 
-	pages[name].Visible = true
 
-end)
-```
 
-end
+-- StarterGui.ScreenGui.Frame.Visuals
+G2L["8"] = Instance.new("TextButton", G2L["2"]);
+G2L["8"]["BorderSizePixel"] = 0;
+G2L["8"]["TextSize"] = 14;
+G2L["8"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["8"]["BackgroundColor3"] = Color3.fromRGB(57, 57, 57);
+G2L["8"]["FontFace"] = Font.new([[rbxasset://fonts/families/HighwayGothic.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
+G2L["8"]["Size"] = UDim2.new(0, 106, 0, 14);
+G2L["8"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["8"]["Text"] = [[Visuals]];
+G2L["8"]["Name"] = [[Visuals]];
+G2L["8"]["Position"] = UDim2.new(0.28112, 0, 0.06444, 0);
 
-createButton("Main",1)
-createButton("Visuals",2)
-createButton("Misc",3)
-createButton("Settings",4)
 
---// SAMPLE TEXT
-local label = Instance.new("TextLabel")
-label.Size = UDim2.new(1,0,0,50)
-label.BackgroundTransparency = 1
-label.Text = "AimPill Originals"
-label.TextScaled = true
-label.TextColor3 = Color3.new(1,1,1)
-label.Parent = mainPage
+-- StarterGui.ScreenGui.Frame.Visuals.VisualsMenuFrame
+G2L["9"] = Instance.new("Frame", G2L["8"]);
+G2L["9"]["Visible"] = false;
+G2L["9"]["BackgroundColor3"] = Color3.fromRGB(45, 45, 45);
+G2L["9"]["Size"] = UDim2.new(0, 448, 0, 365);
+G2L["9"]["Position"] = UDim2.new(-1.1127, 0, 1.42857, 0);
+G2L["9"]["BorderColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["9"]["Name"] = [[VisualsMenuFrame]];
 
---// RIGHTSHIFT TOGGLE
-UIS.InputBegan:Connect(function(input,gpe)
 
-```
-if gpe then return end
+-- StarterGui.ScreenGui.Frame.Visuals.LocalScript
+G2L["a"] = Instance.new("LocalScript", G2L["8"]);
 
-if input.KeyCode == Enum.KeyCode.RightShift then
-	frame.Visible = not frame.Visible
-end
-```
 
-end)
 
---// DRAGGING
-local dragging
-local dragInput
-local dragStart
-local startPos
+-- StarterGui.ScreenGui.Frame.Misc
+G2L["b"] = Instance.new("TextButton", G2L["2"]);
+G2L["b"]["BorderSizePixel"] = 0;
+G2L["b"]["TextSize"] = 14;
+G2L["b"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["b"]["BackgroundColor3"] = Color3.fromRGB(57, 57, 57);
+G2L["b"]["FontFace"] = Font.new([[rbxasset://fonts/families/HighwayGothic.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
+G2L["b"]["Size"] = UDim2.new(0, 104, 0, 14);
+G2L["b"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["b"]["Text"] = [[Soon...]];
+G2L["b"]["Name"] = [[Misc]];
+G2L["b"]["Position"] = UDim2.new(0.52386, 0, 0.06444, 0);
 
-local function update(input)
 
-```
-local delta = input.Position - dragStart
+-- StarterGui.ScreenGui.Frame.Misc.MiscMenuFrame
+G2L["c"] = Instance.new("Frame", G2L["b"]);
+G2L["c"]["Visible"] = false;
+G2L["c"]["BackgroundColor3"] = Color3.fromRGB(45, 45, 45);
+G2L["c"]["Size"] = UDim2.new(0, 448, 0, 365);
+G2L["c"]["Position"] = UDim2.new(-2.24931, 0, 1.5, 0);
+G2L["c"]["BorderColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["c"]["Name"] = [[MiscMenuFrame]];
 
-frame.Position = UDim2.new(
-	startPos.X.Scale,
-	startPos.X.Offset + delta.X,
-	startPos.Y.Scale,
-	startPos.Y.Offset + delta.Y
-)
-```
 
-end
+-- StarterGui.ScreenGui.Frame.Misc.LocalScript
+G2L["d"] = Instance.new("LocalScript", G2L["b"]);
 
-frame.InputBegan:Connect(function(input)
 
-```
-if input.UserInputType == Enum.UserInputType.MouseButton1 then
 
-	dragging = true
-	dragStart = input.Position
-	startPos = frame.Position
+-- StarterGui.ScreenGui.Frame.Settings
+G2L["e"] = Instance.new("TextButton", G2L["2"]);
+G2L["e"]["BorderSizePixel"] = 0;
+G2L["e"]["TextSize"] = 14;
+G2L["e"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["e"]["BackgroundColor3"] = Color3.fromRGB(57, 57, 57);
+G2L["e"]["FontFace"] = Font.new([[rbxasset://fonts/families/HighwayGothic.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
+G2L["e"]["Size"] = UDim2.new(0, 104, 0, 14);
+G2L["e"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["e"]["Text"] = [[Settings]];
+G2L["e"]["Name"] = [[Settings]];
+G2L["e"]["Position"] = UDim2.new(0.75837, 0, 0.06444, 0);
 
-	input.Changed:Connect(function()
 
-		if input.UserInputState == Enum.UserInputState.End then
-			dragging = false
+-- StarterGui.ScreenGui.Frame.Settings.SettingsMenuFrame
+G2L["f"] = Instance.new("Frame", G2L["e"]);
+G2L["f"]["Visible"] = false;
+G2L["f"]["BackgroundColor3"] = Color3.fromRGB(45, 45, 45);
+G2L["f"]["Size"] = UDim2.new(0, 448, 0, 365);
+G2L["f"]["Position"] = UDim2.new(-3.31662, 0, 1.42857, 0);
+G2L["f"]["BorderColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["f"]["Name"] = [[SettingsMenuFrame]];
+
+
+-- StarterGui.ScreenGui.Frame.Settings.LocalScript
+G2L["10"] = Instance.new("LocalScript", G2L["e"]);
+
+
+
+-- StarterGui.ScreenGui.Frame.LocalScript
+G2L["11"] = Instance.new("LocalScript", G2L["2"]);
+
+
+
+-- StarterGui.ScreenGui.LocalScript
+G2L["12"] = Instance.new("LocalScript", G2L["1"]);
+
+
+
+-- StarterGui.ScreenGui.Frame.Main.LocalScript
+local function C_7()
+local script = G2L["7"];
+	local subMenu = script.Parent:WaitForChild("SubMenuFrame")
+	
+	script.Parent.MouseButton1Click:Connect(function()
+		if subMenu.Visible == false then
+			subMenu.Visible = true
+		else
+			subMenu.Visible = false
 		end
-
 	end)
+end;
+task.spawn(C_7);
+-- StarterGui.ScreenGui.Frame.Visuals.LocalScript
+local function C_a()
+local script = G2L["a"];
+	local subMenu = script.Parent:WaitForChild("VisualsMenuFrame")
+	
+	script.Parent.MouseButton1Click:Connect(function()
+		if subMenu.Visible == false then
+			subMenu.Visible = true
+		else
+			subMenu.Visible = false
+		end
+	end)
+end;
+task.spawn(C_a);
+-- StarterGui.ScreenGui.Frame.Misc.LocalScript
+local function C_d()
+local script = G2L["d"];
+	local subMenu = script.Parent:WaitForChild("MiscMenuFrame")
+	
+	script.Parent.MouseButton1Click:Connect(function()
+		if subMenu.Visible == false then
+			subMenu.Visible = true
+		else
+			subMenu.Visible = false
+		end
+	end)
+end;
+task.spawn(C_d);
+-- StarterGui.ScreenGui.Frame.Settings.LocalScript
+local function C_10()
+local script = G2L["10"];
+	local subMenu = script.Parent:WaitForChild("SettingsMenuFrame")
+	
+	script.Parent.MouseButton1Click:Connect(function()
+		if subMenu.Visible == false then
+			subMenu.Visible = true
+		else
+			subMenu.Visible = false
+		end
+	end)
+end;
+task.spawn(C_10);
+-- StarterGui.ScreenGui.Frame.LocalScript
+local function C_11()
+local script = G2L["11"];
+	local frame = script.Parent
+	local dragging = false
+	local dragInput
+	local dragStart
+	local startPos
+	
+	local UserInputService = game:GetService("UserInputService")
+	
+	frame.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 then
+			dragging = true
+			dragStart = input.Position
+			startPos = frame.Position
+	
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragging = false
+				end
+			end)
+		end
+	end)
+	
+	frame.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement then
+			dragInput = input
+		end
+	end)
+	
+	UserInputService.InputChanged:Connect(function(input)
+		if input == dragInput and dragging then
+			local delta = input.Position - dragStart
+	
+			frame.Position = UDim2.new(
+				startPos.X.Scale,
+				startPos.X.Offset + delta.X,
+				startPos.Y.Scale,
+				startPos.Y.Offset + delta.Y
+			)
+		end
+	end)
+end;
+task.spawn(C_11);
+-- StarterGui.ScreenGui.LocalScript
+local function C_12()
+local script = G2L["12"];
+	local UserInputService = game:GetService("UserInputService")
+	local menu = script.Parent:WaitForChild("Frame") -- ton frame principal qui contient tout
+	
+	UserInputService.InputBegan:Connect(function(input, gameProcessed)
+		if gameProcessed then return end
+		if input.KeyCode == Enum.KeyCode.RightShift then
+			-- toggle visibilité du menu entier
+			menu.Visible = not menu.Visible
+	
+			-- on ferme tous les sub-menus pour être sûr
+			for _, child in pairs(menu:GetChildren()) do
+				if child:IsA("Frame") and child.Name ~= "Frame" then
+					child.Visible = false
+				end
+			end
+		end
+	end)
+end;
+task.spawn(C_12);
 
-end
-```
-
-end)
-
-frame.InputChanged:Connect(function(input)
-
-```
-if input.UserInputType == Enum.UserInputType.MouseMovement then
-	dragInput = input
-end
-```
-
-end)
-
-UIS.InputChanged:Connect(function(input)
-
-```
-if input == dragInput and dragging then
-	update(input)
-end
-```
-
-end)
+return G2L["1"], require;
