@@ -1,138 +1,131 @@
--- AimPillOGs Menu corrigé
--- Mettre ce LocalScript dans StarterGui
+--// SERVICES
+local UserInputService = game:GetService("UserInputService")
 
-local Players = game:GetService("Players")
-local UIS = game:GetService("UserInputService")
-local player = Players.LocalPlayer
-local playerGui = player:WaitForChild("PlayerGui")
+--// GUI REFERENCES
+local gui = script.Parent
+local menuFrame = gui:WaitForChild("MenuFrame")
 
--- ScreenGui principal
-local ScreenGui = Instance.new("ScreenGui")
-ScreenGui.Name = "AimPillMenu"
-ScreenGui.ResetOnSpawn = false
-ScreenGui.Parent = playerGui
+-- pages
+local mainPage = menuFrame:WaitForChild("Main")
+local visualsPage = menuFrame:WaitForChild("Visuals")
+local miscPage = menuFrame:WaitForChild("Misc")
+local settingsPage = menuFrame:WaitForChild("Settings")
 
--- Frame principal
-local Frame = Instance.new("Frame")
-Frame.Name = "Frame"
-Frame.Size = UDim2.new(0, 400, 0, 300)
-Frame.Position = UDim2.new(0.5, -200, 0.5, -150)
-Frame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
-Frame.Parent = ScreenGui
+-- buttons
+local visualsButton = menuFrame:WaitForChild("VisualsButton")
+local miscButton = menuFrame:WaitForChild("MiscButton")
+local settingsButton = menuFrame:WaitForChild("SettingsButton")
+local mainButton = menuFrame:WaitForChild("MainButton")
 
--- Exemple pour UICorner
-local UICornerFrame = Instance.new("UICorner")
-UICornerFrame.CornerRadius = UDim.new(0, 10)
-UICornerFrame.Parent = Frame
+---
 
--- Fonction pour créer un bouton
-local function CreateButton(name, text, pos)
-	local btn = Instance.new("TextButton")
-	btn.Name = name
-	btn.Text = text
-	btn.Size = UDim2.new(0, 120, 0, 40)
-	btn.Position = pos
-	btn.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-	btn.TextColor3 = Color3.fromRGB(255, 255, 255)
-	btn.Parent = Frame
-	
-	local corner = Instance.new("UICorner")
-	corner.CornerRadius = UDim.new(0, 8)
-	corner.Parent = btn
-	
-	return btn
+## -- PAGE SYSTEM
+
+local function hideAllPages()
+mainPage.Visible = false
+visualsPage.Visible = false
+miscPage.Visible = false
+settingsPage.Visible = false
 end
 
--- Création des boutons principaux
-local Main = CreateButton("Main", "Main", UDim2.new(0, 10, 0, 10))
-local Misc = CreateButton("Misc", "Misc", UDim2.new(0, 10, 0, 60))
-local Visuals = CreateButton("Visuals", "Visuals", UDim2.new(0, 10, 0, 110))
-local Settings = CreateButton("Settings", "Settings", UDim2.new(0, 10, 0, 160))
+mainButton.MouseButton1Click:Connect(function()
+hideAllPages()
+mainPage.Visible = true
+end)
 
--- Fonction pour créer un sub-menu
-local function CreateSubMenu(name, pos)
-	local sub = Instance.new("Frame")
-	sub.Name = name.."Menu"
-	sub.Size = UDim2.new(0, 250, 0, 150)
-	sub.Position = pos
-	sub.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
-	sub.Visible = false
-	sub.Parent = Frame
-	
-	local corner = Instance.new("UICorner")
-	corner.CornerRadius = UDim.new(0, 10)
-	corner.Parent = sub
-	
-	return sub
+visualsButton.MouseButton1Click:Connect(function()
+hideAllPages()
+visualsPage.Visible = true
+end)
+
+miscButton.MouseButton1Click:Connect(function()
+hideAllPages()
+miscPage.Visible = true
+end)
+
+settingsButton.MouseButton1Click:Connect(function()
+hideAllPages()
+settingsPage.Visible = true
+end)
+
+---
+
+## -- MENU TOGGLE (RightShift)
+
+UserInputService.InputBegan:Connect(function(input, gameProcessed)
+
+```
+if gameProcessed then return end
+
+if input.KeyCode == Enum.KeyCode.RightShift then
+	menuFrame.Visible = not menuFrame.Visible
 end
+```
 
--- Création des sub-menus
-local MainMenu = CreateSubMenu("Main", UDim2.new(0, 150, 0, 10))
-local MiscMenu = CreateSubMenu("Misc", UDim2.new(0, 150, 0, 60))
-local VisualsMenu = CreateSubMenu("Visuals", UDim2.new(0, 150, 0, 110))
-local SettingsMenu = CreateSubMenu("Settings", UDim2.new(0, 150, 0, 160))
+end)
 
--- Fonction pour toggle un seul sub-menu
-local function toggleMenu(menu)
-	for _, child in pairs(Frame:GetChildren()) do
-		if child:IsA("Frame") and child.Name:find("Menu") then
-			child.Visible = false
-		end
-	end
-	menu.Visible = true
-end
+---
 
--- Connexion des boutons aux sub-menus
-Main.MouseButton1Click:Connect(function() toggleMenu(MainMenu) end)
-Misc.MouseButton1Click:Connect(function() toggleMenu(MiscMenu) end)
-Visuals.MouseButton1Click:Connect(function() toggleMenu(VisualsMenu) end)
-Settings.MouseButton1Click:Connect(function() toggleMenu(SettingsMenu) end)
+## -- DRAGGING SYSTEM
 
--- Drag du menu
 local dragging = false
-local dragInput, mousePos, framePos
+local dragInput
+local dragStart
+local startPos
 
-Frame.InputBegan:Connect(function(input)
-	if input.UserInputType == Enum.UserInputType.MouseButton1 then
-		dragging = true
-		mousePos = input.Position
-		framePos = Frame.Position
-		input.Changed:Connect(function()
-			if input.UserInputState == Enum.UserInputState.End then
-				dragging = false
-			end
-		end)
-	end
-end)
+local function update(input)
 
-Frame.InputChanged:Connect(function(input)
-	if input.UserInputType == Enum.UserInputType.MouseMovement then
-		dragInput = input
-	end
-end)
+```
+local delta = input.Position - dragStart
 
-UIS.InputChanged:Connect(function(input)
-	if input == dragInput and dragging then
-		local delta = input.Position - mousePos
-		Frame.Position = UDim2.new(
-			framePos.X.Scale, framePos.X.Offset + delta.X,
-			framePos.Y.Scale, framePos.Y.Offset + delta.Y
-		)
-	end
-end)
+menuFrame.Position = UDim2.new(
+	startPos.X.Scale,
+	startPos.X.Offset + delta.X,
+	startPos.Y.Scale,
+	startPos.Y.Offset + delta.Y
+)
+```
 
--- Toggle menu entier avec RightShift
-UIS.InputBegan:Connect(function(input, processed)
-	if processed then return end
-	if input.KeyCode == Enum.KeyCode.RightShift then
-		ScreenGui.Enabled = not ScreenGui.Enabled
-		-- Fermer tous les sub-menus si on ferme le menu principal
-		if not ScreenGui.Enabled then
-			for _, child in pairs(Frame:GetChildren()) do
-				if child:IsA("Frame") and child.Name:find("Menu") then
-					child.Visible = false
-				end
-			end
+end
+
+menuFrame.InputBegan:Connect(function(input)
+
+```
+if input.UserInputType == Enum.UserInputType.MouseButton1 then
+
+	dragging = true
+	dragStart = input.Position
+	startPos = menuFrame.Position
+
+	input.Changed:Connect(function()
+
+		if input.UserInputState == Enum.UserInputState.End then
+			dragging = false
 		end
-	end
+
+	end)
+
+end
+```
+
+end)
+
+menuFrame.InputChanged:Connect(function(input)
+
+```
+if input.UserInputType == Enum.UserInputType.MouseMovement then
+	dragInput = input
+end
+```
+
+end)
+
+UserInputService.InputChanged:Connect(function(input)
+
+```
+if input == dragInput and dragging then
+	update(input)
+end
+```
+
 end)
