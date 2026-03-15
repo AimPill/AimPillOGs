@@ -1,0 +1,118 @@
+<roblox!‰ÿ
+
+                META$   "       ð      ExplicitAutoJoints   trueINST   *       ð        Frame  
+ `INST"   0       ÿ    
+   LocalScript   `INST          ð
+   	   ScreenGui        INST   '       ù   
+   TextButton   P INST          ð
+   	   TextLabel       PROP          ð       Active      PROP"   D       ð    
+   AnchorPoint
+  P     PROP)   4       ð
+       AttributesSerialize 
+ P     PROP          ð       AutoLocalizePROP#   .       ð     
+   AutomaticSize 
+ P     PROP8   a       ð       BackgroundColor3{| bÁaaaa o„Äbbbb PÄbbbbPROP,   7       ð       BackgroundTransparency 
+ P     PROPM   ]       ð       BorderColor3}}     ||  ‰‰   ŒŒ 0  aa  `bb    PROP    +       ð    
+   BorderMode 
+ P     PROP&   0       ð	       BorderSizePixel 
+ ` PROP#   E       ð       Capabilities!  P     PROP!          ð       ClipsDescendants    PROP$   "       ð       DefinesCapabilities      PROP          ð	    	   Draggable      PROP   *       ð    	   InputSink 
+ P     PROP          ð       InteractablePROP!   ,       ð    
+   LayoutOrder 
+ P     PROPW   i       õ        Name   Frame	 ±   SubMenu µ   Visuals …
+   Misc 5 ðettingsMenuFramePROP(   2       ð
+       NextSelectionDown 
+ `     PROP(   2       ð
+       NextSelectionLeft 
+ `     PROP)   3       ð       NextSelectionRight 
+ `     PROP&   0       ð	       NextSelectionUp 
+ `     PROPO   q       ð2       Position | x€€A $¨Ú Úé‡< 
+}}  €m€m
+  ¶ ¶ò  Ü ÜA  P     PROP,   6       ð       RootLocalizationTable 
+ `     PROP   )       ð       Rotation 
+ P     PROP          ð
+    
+   Selectable      PROP+   6       ð       SelectionBehaviorDown 
+ P     PROP+   6       ð       SelectionBehaviorLeft 
+ P     PROP,   7       ð       SelectionBehaviorRight 
+ P     PROP)   4       ð
+       SelectionBehaviorUp 
+ P     PROP          ð       SelectionGroup      PROP+   5       ð       SelectionImageObject 
+ `     PROP$   /       ð       SelectionOrder 
+ P     PROP.   m       Ð       Size 
+  % h´Ü€€€€D À F&ÚÚÚÚPROP$   /       ð       SizeConstraint 
+ P     PROP%   F       ð     
+   SourceAssetId  `PROP   &       à       Style 
+ P     PROP   %       Ð       Tags
+ 
+ P     PROP          ð         Visible   PROP   '       ð        ZIndex 
+ `PROP(   4       ð      AttributesSerialize  P     PROP!   E       ÿ       Capabilities!  P     PROP$   "       ð      DefinesCapabilities      PROP          ð      Disabled      PROP!   -       ð      LinkedSource  P     PROP'   g       ÿ
+      Name
+   LocalScript 3PcriptPROP   +       þ   
+   RunContext  P     PROP        ñ.   
+   ScriptGuid&   {18CAB1B6-1F9D-47BA-B30E-FA38BA95406E}* ò3FD0BF90-56CC-4A2B-9F86-71DDFF971DE1* ò494179CB-3318-40F3-B4EE-3E3B5A71E6A0* À22873C53-AC8~ óA2-B524-3A3C09258F76* ò424F83C-E055-4842-8C19-5A3B18430BDD* ðC1449D8F-C2AB-42D9-94C6-091A076090C6}PROPÊ  J	      ò1      SourceÓ   local subMenu = script.Parent:WaitForChild("S& ™Frame")
+
+, ô.MouseButton1Click:Connect(function()
+	ifm ó
+.Visible == false then
+		   ¿ true
+	else > ¿
+	end
+end)×× pVisualsÛ ÔÛ OMiscØ ‘ØØ Setting´’$Œff9d
+‚…draggingÏ HInpu' DStar s CPos
+  AUser0 ôService = game:Ge ,("$  Ë› .: ^Began¼i† Á
+ .G 1TypÅJEnum 	ß ê Ø Õ # =\ @Posi2 ïâ   @ 2
+		. ~Changed´ @)
+		r' ± OStat²   D.Endª 	¬ e	g )s	A ‡ C"„Movementš  2­2‹ è ×–  ` 1and œ¡›Delta€ –! -/ ÏB
+
+		Y´Ð = UDim2.new(MÀ›.X.Scale, ‚Offset +n *.X  Y5 Y5 GY
+		¬$A)-ÿ m0 Nr -- ton¿ñ principal qui contiÙ?out»’	,à’Processed^ ó 4€ return $ fKeyCod
+ ¥.RightShifqÃ `ggle v¶ ’ilitÃ© du eÅ @r
+		  ¸ 1not!   0-- @ermeõ Ps les-< ðs pour Ãªtre sÃ»T €for _, c„  in pairs(.  Ö›ren()) do>"if, F:IsA„ ÈC “.Name ~= Ÿ 8 	 –•  5ø€end
+end)PROP#   F       ÿ   
+   SourceAssetId  `PROP   %       À      Tags  P     PROP"           ð      AttributesSerialize    PROP          ð       AutoLocalizePROP          ð      Capabilities!        PROP           ð      ClipToDeviceSafeAreaPROP          ð      DefinesCapabilities PROP          ð
+      DisplayOrder    PROP          ð       EnabledPROP          ð
+      Name	   ScreenGuiPROP          ð       ResetOnSpawnPROP$   "       ð      RootLocalizationTable   PROP$   "       ð      SafeAreaCompatibility   PROP          ð
+      ScreenInsets   PROP$   "       ð      SelectionBehaviorDown    PROP$   "       ð      SelectionBehaviorLeft    PROP%   #       ð      SelectionBehaviorRight    PROP"           ð      SelectionBehaviorUp    PROP          ð	      SelectionGroup PROP           ð   
+   SourceAssetId  ‚§ ÅÌPROP          ð      Tags    PROP          ð      ZIndexBehavior   PROP          ð      ActivePROP    4       ÿ   
+   AnchorPoint
+   P     PROP'   ,       ö      AttributesSerialize  P     PROP          ð
+      AutoButtonColorPROP          ð
+      AutoLocalizePROP!   &       ö   
+   AutomaticSize  P     PROP0   I       ó      BackgroundColor3||||Á OÄÄÄÄ PÁÄÄÄÄPROP*   /       ö      BackgroundTransparency  P     PROP"   E       ð      BorderColor3  P     PROP   #       ö   
+   BorderMode  P     PROP$   (       ð      BorderSizePixel  P     PROP!   5       ÿ       Capabilities!   P     PROP          ð      ClipsDescendants    PROP"           ð      DefinesCapabilities    PROP          ð    	   Draggable    PROPS   í       ÿ9      FontFace ,   rbxasset://fonts/families/HighwayGothic.json¼     7 P     PROP%   *       ö      HoverHapticEffect  P    PROP   "       ö   	   InputSink  P     PROP          ð
+      InteractablePROP    $       ð   
+   LayoutOrder  P     PROP%   #       ð   
+   LineHeight            PROP/   4       ö      LocalizationMatchIdentifier  P     PROP1   6       ö      LocalizationMatchedSourceText  P     PROP(   ,       ð      MaxVisibleGraphemes  P PROP          ð      Modal    PROP4   4       Ð      Name	 ñ Main    Visuals ð isc   SettingsPROP%   *       ö      NextSelectionDown  P    PROP%   *       ö      NextSelectionLeft  P    PROP&   +       ö
+      NextSelectionRight  P    PROP#   (       ö
+      NextSelectionUp  P    PROP$   )       ö
+      OpenTypeFeatures  P     PROP=   Q       ÿ#      Position y}~~÷„íÝ7Hè’>²{{{{    ññññVVVV   P     PROP%   *       ö      PressHapticEffect  P    PROP          ð      RichText    PROP)   .       ö      RootLocalizationTable  P    PROP   !       ö      Rotation  P     PROP          ð   
+   SelectablePROP          ð      Selected    PROP)   .       ö      SelectionBehaviorDown  P     PROP)   .       ö      SelectionBehaviorLeft  P     PROP*   /       ö      SelectionBehaviorRight  P     PROP'   ,       ö      SelectionBehaviorUp  P     PROP          ð      SelectionGroup    PROP(   -       ö      SelectionImageObject  P    PROP#   '       ð       SelectionOrder  P     PROP   M       ï      Size   GàÔÐÐ/ P PROP"   '       ö	      SizeConstraint  P     PROP"   6       ÿ   
+   SourceAssetId   P PROP          ö       Style  P     PROP          æ      Tags  P     PROP8   7       Ð      Text	 ð Main    Visuals
+ ðSoon...   SettingsPROP&   C       ÷	   
+   TextColor3   P     PROP!   &       ö   
+   TextDirection  P     PROP          ð   
+   TextScaled    PROP#   !       ð      TextSize‚‚‚‚ÀÀÀÀ        PROP%   I       ÿ
+      TextStrokeColor3  P     PROP1   /       ð       TextStrokeTransparency            PROP$   )       ö
+      TextTransparency  P     PROP    %       ö       TextTruncate  P     PROP          ð	   
+   TextWrapped    PROP"   '       ö	      TextXAlignment  P PROP"   '       ö	      TextYAlignment  P PROP          ð       VisiblePROP          à      ZIndex  P PROP          ð      Active PROP          ð
+   
+   AnchorPoint
+        PROP"           ð      AttributesSerialize    PROP          ð       AutoLocalizePROP          ð
+   
+   AutomaticSize    PROP'   %       ð      BackgroundColor3|ÁÁÄ|ÁÁÄ|ÁÁÄPROP%   #       ð      BackgroundTransparency    PROP"   !       ð      BorderColor3          PROP          ð   
+   BorderMode    PROP          ð
+      BorderSizePixel    PROP          ð      Capabilities!        PROP          ð
+      ClipsDescendants PROP          ð      DefinesCapabilities PROP          ð   	   Draggable PROPA   ?       ð0      FontFace #   rbxasset://fonts/families/Jura.json¼    PROP          ð    	   InputSink    PROP          ð       InteractablePROP          ð	   
+   LayoutOrder    PROP          ð   
+   LineHeight   PROP*   (       ð      LocalizationMatchIdentifier    PROP,   *       ð      LocalizationMatchedSourceText    PROP"           ð      MaxVisibleGraphemes   PROP          @    ðName	   TextLabelPROP           ð      NextSelectionDown   PROP           ð      NextSelectionLeft   PROP!          ð      NextSelectionRight   PROP          ð
+      NextSelectionUp   PROP          ð      OpenTypeFeatures    PROP#   !       ð      Position {š¶             PROP          ð      RichText PROP$   "       ð      RootLocalizationTable   PROP          ð      Rotation    PROP          ð   
+   Selectable PROP$   "       ð      SelectionBehaviorDown    PROP$   "       ð      SelectionBehaviorLeft    PROP%   #       ð      SelectionBehaviorRight    PROP"           ð      SelectionBehaviorUp    PROP          ð	      SelectionGroup PROP#   !       ð      SelectionImageObject   PROP          ð      SelectionOrder    PROP          @    eSize   `š   PROP          ð      SizeConstraint    PROP           ð   
+   SourceAssetId       PROP          @    Tags    PROP#   "       @    ð
+Text   AimPill OriginalsPROP!          ð   
+   TextColor3         PROP          ð
+   
+   TextDirection    PROP          ð   
+   TextScaled PROP          ð      TextSize‚   PROP'   %       ð      TextStrokeColor3            PROP%   #       ð      TextStrokeTransparency   PROP          ð      TextTransparency    PROP          ð
+      TextTruncate    PROP          ð   
+   TextWrapped PROP          ð      TextXAlignment   PROP          ð      TextYAlignment   PROP          ð       VisiblePROP          ð      ZIndex   PRNT,   •       ?   %d O !J #ð  
+    END     	       </roblox>
