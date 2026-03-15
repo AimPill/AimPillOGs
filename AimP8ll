@@ -1,74 +1,121 @@
 --// SERVICES
-local UserInputService = game:GetService("UserInputService")
+local UIS = game:GetService("UserInputService")
+local Players = game:GetService("Players")
 
---// GUI REFERENCES
-local gui = script.Parent
-local menuFrame = gui:WaitForChild("MenuFrame")
+local player = Players.LocalPlayer
+local playerGui = player:WaitForChild("PlayerGui")
 
--- pages
-local mainPage = menuFrame:WaitForChild("Main")
-local visualsPage = menuFrame:WaitForChild("Visuals")
-local miscPage = menuFrame:WaitForChild("Misc")
-local settingsPage = menuFrame:WaitForChild("Settings")
+--// GUI
+local gui = Instance.new("ScreenGui")
+gui.Name = "ExecutorMenu"
+gui.ResetOnSpawn = false
+gui.Parent = playerGui
 
--- buttons
-local visualsButton = menuFrame:WaitForChild("VisualsButton")
-local miscButton = menuFrame:WaitForChild("MiscButton")
-local settingsButton = menuFrame:WaitForChild("SettingsButton")
-local mainButton = menuFrame:WaitForChild("MainButton")
+--// MAIN FRAME
+local frame = Instance.new("Frame")
+frame.Size = UDim2.new(0,400,0,250)
+frame.Position = UDim2.new(0.5,-200,0.5,-125)
+frame.BackgroundColor3 = Color3.fromRGB(30,30,30)
+frame.BorderSizePixel = 0
+frame.Parent = gui
 
----
+--// TITLE
+local title = Instance.new("TextLabel")
+title.Size = UDim2.new(1,0,0,30)
+title.BackgroundTransparency = 1
+title.Text = "AimPill Menu"
+title.TextColor3 = Color3.new(1,1,1)
+title.TextScaled = true
+title.Parent = frame
 
-## -- PAGE SYSTEM
+--// TAB BUTTON HOLDER
+local tabs = Instance.new("Frame")
+tabs.Size = UDim2.new(0,100,1,-30)
+tabs.Position = UDim2.new(0,0,0,30)
+tabs.BackgroundColor3 = Color3.fromRGB(25,25,25)
+tabs.Parent = frame
 
-local function hideAllPages()
-mainPage.Visible = false
-visualsPage.Visible = false
-miscPage.Visible = false
-settingsPage.Visible = false
+--// CONTENT HOLDER
+local content = Instance.new("Frame")
+content.Size = UDim2.new(1,-100,1,-30)
+content.Position = UDim2.new(0,100,0,30)
+content.BackgroundTransparency = 1
+content.Parent = frame
+
+--// PAGES
+local pages = {}
+
+local function createPage(name)
+local page = Instance.new("Frame")
+page.Size = UDim2.new(1,0,1,0)
+page.Visible = false
+page.BackgroundTransparency = 1
+page.Parent = content
+pages[name] = page
+return page
 end
 
-mainButton.MouseButton1Click:Connect(function()
-hideAllPages()
+local mainPage = createPage("Main")
+local visualsPage = createPage("Visuals")
+local miscPage = createPage("Misc")
+local settingsPage = createPage("Settings")
+
 mainPage.Visible = true
-end)
 
-visualsButton.MouseButton1Click:Connect(function()
-hideAllPages()
-visualsPage.Visible = true
-end)
-
-miscButton.MouseButton1Click:Connect(function()
-hideAllPages()
-miscPage.Visible = true
-end)
-
-settingsButton.MouseButton1Click:Connect(function()
-hideAllPages()
-settingsPage.Visible = true
-end)
-
----
-
-## -- MENU TOGGLE (RightShift)
-
-UserInputService.InputBegan:Connect(function(input, gameProcessed)
+--// BUTTON CREATOR
+local function createButton(name,order)
 
 ```
-if gameProcessed then return end
+local btn = Instance.new("TextButton")
+btn.Size = UDim2.new(1,0,0,40)
+btn.Position = UDim2.new(0,0,0,(order-1)*40)
+btn.Text = name
+btn.BackgroundColor3 = Color3.fromRGB(40,40,40)
+btn.TextColor3 = Color3.new(1,1,1)
+btn.Parent = tabs
+
+btn.MouseButton1Click:Connect(function()
+
+	for _,v in pairs(pages) do
+		v.Visible = false
+	end
+
+	pages[name].Visible = true
+
+end)
+```
+
+end
+
+createButton("Main",1)
+createButton("Visuals",2)
+createButton("Misc",3)
+createButton("Settings",4)
+
+--// SAMPLE TEXT
+local label = Instance.new("TextLabel")
+label.Size = UDim2.new(1,0,0,50)
+label.BackgroundTransparency = 1
+label.Text = "AimPill Originals"
+label.TextScaled = true
+label.TextColor3 = Color3.new(1,1,1)
+label.Parent = mainPage
+
+--// RIGHTSHIFT TOGGLE
+UIS.InputBegan:Connect(function(input,gpe)
+
+```
+if gpe then return end
 
 if input.KeyCode == Enum.KeyCode.RightShift then
-	menuFrame.Visible = not menuFrame.Visible
+	frame.Visible = not frame.Visible
 end
 ```
 
 end)
 
----
-
-## -- DRAGGING SYSTEM
-
-local dragging = false
+--// DRAGGING
+local dragging
 local dragInput
 local dragStart
 local startPos
@@ -78,7 +125,7 @@ local function update(input)
 ```
 local delta = input.Position - dragStart
 
-menuFrame.Position = UDim2.new(
+frame.Position = UDim2.new(
 	startPos.X.Scale,
 	startPos.X.Offset + delta.X,
 	startPos.Y.Scale,
@@ -88,14 +135,14 @@ menuFrame.Position = UDim2.new(
 
 end
 
-menuFrame.InputBegan:Connect(function(input)
+frame.InputBegan:Connect(function(input)
 
 ```
 if input.UserInputType == Enum.UserInputType.MouseButton1 then
 
 	dragging = true
 	dragStart = input.Position
-	startPos = menuFrame.Position
+	startPos = frame.Position
 
 	input.Changed:Connect(function()
 
@@ -110,7 +157,7 @@ end
 
 end)
 
-menuFrame.InputChanged:Connect(function(input)
+frame.InputChanged:Connect(function(input)
 
 ```
 if input.UserInputType == Enum.UserInputType.MouseMovement then
@@ -120,7 +167,7 @@ end
 
 end)
 
-UserInputService.InputChanged:Connect(function(input)
+UIS.InputChanged:Connect(function(input)
 
 ```
 if input == dragInput and dragging then
