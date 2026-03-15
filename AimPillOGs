@@ -1,7 +1,7 @@
-local Players = game:GetService("Players")
-local player = Players.LocalPlayer
-local playerGui = player:WaitForChild("PlayerGui")
-ScreenGui.Parent = playerGui
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
 
 local ScreenGui = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
@@ -18,10 +18,7 @@ local SettingsMenuFrame = Instance.new("Frame")
 
 --Properties:
 
-local player = game:GetService("Players").LocalPlayer
-local playerGui = player:WaitForChild("PlayerGui")
-
-ScreenGui.Parent = playerGui
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 Frame.Parent = ScreenGui
@@ -131,7 +128,7 @@ SettingsMenuFrame.Visible = false
 
 -- Scripts:
 
-local function RELOUU_fake_script() -- Main.LocalScript 
+local function ZFNELHQ_fake_script() -- Main.LocalScript 
 	local script = Instance.new('LocalScript', Main)
 
 	local subMenu = script.Parent:WaitForChild("SubMenuFrame")
@@ -144,9 +141,9 @@ local function RELOUU_fake_script() -- Main.LocalScript
 		end
 	end)
 end
-coroutine.wrap(RELOUU_fake_script)()
-local function MEWOFPZ_fake_script() -- Visuals.LocalScript 
-	local script = Instance.new('LocalScript', Visuals)jj
+coroutine.wrap(ZFNELHQ_fake_script)()
+local function HLEH_fake_script() -- Visuals.LocalScript 
+	local script = Instance.new('LocalScript', Visuals)
 
 	local subMenu = script.Parent:WaitForChild("VisualsMenuFrame")
 	
@@ -158,8 +155,8 @@ local function MEWOFPZ_fake_script() -- Visuals.LocalScript
 		end
 	end)
 end
-coroutine.wrap(MEWOFPZ_fake_script)()
-local function ZWPJTQ_fake_script() -- Misc.LocalScript 
+coroutine.wrap(HLEH_fake_script)()
+local function GFHZZ_fake_script() -- Misc.LocalScript 
 	local script = Instance.new('LocalScript', Misc)
 
 	local subMenu = script.Parent:WaitForChild("MiscMenuFrame")
@@ -172,8 +169,8 @@ local function ZWPJTQ_fake_script() -- Misc.LocalScript
 		end
 	end)
 end
-coroutine.wrap(ZWPJTQ_fake_script)()
-local function KTGPT_fake_script() -- Settings.LocalScript 
+coroutine.wrap(GFHZZ_fake_script)()
+local function QCTFSLR_fake_script() -- Settings.LocalScript 
 	local script = Instance.new('LocalScript', Settings)
 
 	local subMenu = script.Parent:WaitForChild("SettingsMenuFrame")
@@ -186,8 +183,8 @@ local function KTGPT_fake_script() -- Settings.LocalScript
 		end
 	end)
 end
-coroutine.wrap(KTGPT_fake_script)()
-local function ZVQRSWN_fake_script() -- Frame.LocalScript 
+coroutine.wrap(QCTFSLR_fake_script)()
+local function YKQMMHE_fake_script() -- Frame.LocalScript 
 	local script = Instance.new('LocalScript', Frame)
 
 	local frame = script.Parent
@@ -231,8 +228,8 @@ local function ZVQRSWN_fake_script() -- Frame.LocalScript
 		end
 	end)
 end
-coroutine.wrap(ZVQRSWN_fake_script)()
-local function QEVDRBX_fake_script() -- ScreenGui.LocalScript 
+coroutine.wrap(YKQMMHE_fake_script)()
+local function PVPW_fake_script() -- ScreenGui.LocalScript 
 	local script = Instance.new('LocalScript', ScreenGui)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -253,3 +250,4 @@ local function QEVDRBX_fake_script() -- ScreenGui.LocalScript
 		end
 	end)
 end
+coroutine.wrap(PVPW_fake_script)()
